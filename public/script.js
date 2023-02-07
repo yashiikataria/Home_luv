@@ -11,14 +11,14 @@ function createCard(x)
 
     let p=document.createElement('p');
     let p1=document.createElement('p');
-
+   
     let a=document.createElement('a');
     a.href="../src/outer.html?url=" + x.urlTitle;
     
     console.log("hello" , a.href)
     a.appendChild(p);
 
-    img.src=x.imageUrl;
+    img.src=x.image;
     img.style.height="200px"
     img.style.width="200px"
 
@@ -51,7 +51,7 @@ async function searchAll(){
    
     let search=document.getElementById('search');
     console.log(search.value);
-    const value = await fetch(`http://localhost:5500/?pagesize=${pagesize}&page=${pgNo}&search=${search.value}&ctr=12`)
+    const value = await fetch(`http://localhost:2000/articlepage/?pagesize=${pagesize}&page=${pgNo}&search=${search.value}&ctr=12`)
     const data = await value.json();
     console.log(value)
     for(let x of data){
@@ -65,7 +65,7 @@ async function getData(category) {
     console.log(category);
     if (category == 'articles') {
         mainbody.innerHTML = "";
-        const value = await fetch(`http://localhost:5500/?pagesize=${pagesize}&page=${pgNo}&ctr=14`);
+        const value = await fetch(`http://localhost:2000/articlepage/?pagesize=${pagesize}&page=${pgNo}&ctr=14`);
         const data = await value.json();
         for(let x of data){
                   createCard(x)
@@ -75,7 +75,7 @@ async function getData(category) {
     } 
     else {
         mainbody.innerHTML = "";
-        const value = await fetch(`http://localhost:5500/?pagesize=${pagesize}&page=${pgNo}&category=${category}&ctr=5`);
+        const value = await fetch(`http://localhost:2000/articlepage/?pagesize=${pagesize}&page=${pgNo}&category=${category}&ctr=5`);
         const data = await value.json();
         for(let x of data){
                   createCard(x)

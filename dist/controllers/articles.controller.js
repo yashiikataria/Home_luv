@@ -14,12 +14,14 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const fetcher_repository_1 = __importDefault(require("../repositories/fetcher.repository"));
 const constants_1 = require("../utils/constants");
+const app_services_1 = __importDefault(require("../services/app.services"));
 const getMainController = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    let middleWareResponse = [];
     const { category, search, title } = req.query;
     let response;
     try {
         if (category) {
-            response = yield (0, fetcher_repository_1.default)(constants_1.url + `category?pagesize=${req.query.pagesize}&page=${req.query.page}&category=${category}&ctr=5`);
+            response = yield (0, fetcher_repository_1.default)(constants_1.url + `category?pagesize=${req.query.pagesize}&page=${req.query.pgNo}&category=${category}&ctr=5`);
         }
         else if (search) {
             response = yield (0, fetcher_repository_1.default)(constants_1.url + `articles?pagesize=${req.query.pagsize}&page=${req.query.pgNo}&search=${search}&ctr=12`);
@@ -30,7 +32,9 @@ const getMainController = (req, res) => __awaiter(void 0, void 0, void 0, functi
         else {
             response = yield (0, fetcher_repository_1.default)(constants_1.url + `articles?pagesize=${req.query.pagesize}&page=${req.query.pgNo}&ctr=14`);
         }
-        res.status(200).send(response);
+        //   console.log(response);
+        middleWareResponse = (0, app_services_1.default)(response);
+        res.status(200).send(middleWareResponse);
     }
     catch (err) {
         console.log(err);
