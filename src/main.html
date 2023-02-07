@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .page {
+            display: flex;
+            height: 100vh;
+        }
+        .sidenav {
+            /* position: fixed; */
+            display: inline-block;
+            width: 15%;
+            /* height: 100%; */
+            background-color: black;
+            
+        }
+
+        .main {
+           max-width: 50%;
+        }
+
+        .sidenav,ul,li{
+            margin: 10px 0px;
+        }
+         .sidenav a {
+            padding: 6px 8px 6px 16px;
+            text-decoration: none;
+            font-size: 25px;
+            color: #818181;
+            display: block;
+           
+        }
+
+        /* When you mouse over the navigation links, change their color */
+        .sidenav a:hover {
+            color: #f1f1f1;
+        }
+    </style>
+</head>
+
+
+
+<body>
+    <center>
+    <!-- <form action="#"> -->
+
+        <label for="search"><h1>Search</h1></label>
+        <input type="text"id="search" name="search" placeholder="Search...">
+     
+        <button onclick=searchAll()>search</button>
+      <!-- </form>  -->
+
+    </center>
+    <div class="page">
+        <div class="sidenav">
+           
+            <ul>
+                <li><a href="#" onclick="getData('articles')">All Articles</a> </li>
+                <li><a href="#" onclick= "getData('Trends')">Trends</a> </li>
+                <li><a href="#" onclick= "getData('Advice')">Advice</a> </li>
+                <li><a href="#" onclick= "getData('Relationships')">Relationships</a> </li>
+                <li><a href="#" onclick= "getData('Inspiration')">Inspiration</a> </li>
+                <li><a href="#" onclick= "getData('Lifestyle')">Lifestyle</a> </li>
+            </ul>
+        </div>
+        <div id="main"></div>
+    </div>
+
+    <button onclick=getMoreData()>More Data</button>
+    <script src="../public/script.js">
+    </script>
+
+
+
+
+
+
+</body>
+
+</html>
